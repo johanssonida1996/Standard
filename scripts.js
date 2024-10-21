@@ -1,12 +1,15 @@
 // Sticky header - ändrar färg vid scroll
 window.addEventListener('scroll', function () {
-   const header = document.querySelector('.header');
-   if (window.scrollY > 50) {
-       header.classList.add('sticky');
-   } else {
-       header.classList.remove('sticky');
-   }
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+        header.classList.add('sticky');
+    } else {
+        header.classList.remove('sticky');
+    }
 });
+
+// Håll reda på den aktiva länken
+let activeLinkId = null;
 
 document.querySelectorAll('.nav-links a, .skip-link').forEach(link => {
     link.addEventListener('click', function (e) {
@@ -30,14 +33,18 @@ document.querySelectorAll('.nav-links a, .skip-link').forEach(link => {
                 link.classList.remove('active');
             });
 
-            // Lägg till 'active'-klassen på den klickade länken om den inte är skip-länken
-            if (this.classList.contains('nav-links')) {
-                this.classList.add('active');
+            // Lägg till 'active'-klassen på den klickade länken
+            this.classList.add('active');
+            activeLinkId = this.getAttribute('data-target'); // Spara ID för aktiv länk
+
+            // Stäng menyn om den är öppen
+            if (navbar.classList.contains('active')) {
+                toggleMenu();
             }
         }
     });
 });
- 
+
 const menuIcon = document.getElementById('menu-icon');
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelector('.nav-links');
@@ -105,6 +112,14 @@ function toggleMenu() {
             menuIcon.focus(); // Ge fokus tillbaka till menykonen när menyn stängs
         }
     }
+
+    // Om menyn öppnas, återställ aktiv länk
+    if (navbar.classList.contains('active') && activeLinkId) {
+        const activeLink = document.querySelector(`.nav-links a[data-target="${activeLinkId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
 }
 
 // Lägg till click-event för menyikonen
@@ -124,6 +139,7 @@ window.addEventListener('resize', () => {
         navLinks.style.visibility = 'visible';
         navbar.classList.remove('active');
         menuIcon.setAttribute('aria-expanded', 'false');
+        activeLinkId = null; // Återställ aktiv länk när vi inte är i mobilvy
     } else if (!navbar.classList.contains('active')) {
         navLinks.style.visibility = 'hidden';
     }
@@ -134,6 +150,7 @@ document.addEventListener('click', handleClickOutside);
 
 // Stäng menyn med ESC-tangenten
 document.addEventListener('keydown', handleEscapeKey);
+
 
 
 

@@ -125,10 +125,6 @@ header {
 /*------MEDIA QUERY-------*/
 
 @media (max-width: 766px) {
-   .navbar {
-      display: flex;
-      flex-direction: row-reverse;
-   }
   .nav-links {
      visibility: hidden;
      opacity: 0;

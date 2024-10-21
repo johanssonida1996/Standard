@@ -189,10 +189,6 @@ header.sticky .nav-links a {
 
 /*------MEDIA QUERY-------*/
 @media (max-width: 766px) {
-  .navbar {
-    display: flex;
-    flex-direction: row-reverse;
-  }
   .nav-links {
     visibility: hidden;
     opacity: 0;
@@ -311,7 +307,7 @@ header.sticky .nav-links a {
 }
 
 .section {
-  padding: 3rem 32px;
+  padding: 3rem 32px 5rem 32px;
   text-align: center;
   height: 100%;
 }
@@ -371,11 +367,15 @@ header.sticky .nav-links a {
 .section .section-content__contact {
   padding-top: 4rem;
   display: flex;
-  flex-wrap: wrap;
   gap: 4rem;
 }
+@media (max-width: 766px) {
+  .section .section-content__contact {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .section .section-content__contact--text {
-  flex: 0 0 calc(50% - 4rem);
   width: 100%;
 }
 .section .section-content__contact--text p {
@@ -384,9 +384,8 @@ header.sticky .nav-links a {
 .section .section-content__contact--links {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  flex: 0 0 calc(50% - 4rem);
   width: 100%;
+  gap: 1rem;
 }
 .section .section-content__contact--links > div {
   display: flex;
