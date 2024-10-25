@@ -92,7 +92,7 @@ header .navbar {
   margin: 0 auto;
 }
 header .navbar .logo img {
-  width: 100%;
+  width: auto;
   height: 60px;
 }
 header .navbar .nav-links {
@@ -212,6 +212,13 @@ header.sticky .nav-links a {
   .navbar.active .nav-links a {
     color: #fff;
     font-size: 1.2rem;
+  }
+  .logo {
+    width: 50%;
+  }
+  .logo img {
+    width: auto;
+    height: 60px;
   }
   .menu-icon {
     display: block;

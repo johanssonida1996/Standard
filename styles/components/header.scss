@@ -16,7 +16,6 @@ header {
      margin: 0 auto;
 
      .logo {
-      width: 50%;
         img {
            width: auto;
            height: 60px;
@@ -152,6 +151,14 @@ header {
        }
      }
   }
+
+  .logo {
+   width: 50%;
+   img {
+      width: auto;
+      height: 60px;
+   }
+}
 
   .menu-icon { display: block; }
 }
